@@ -27,7 +27,8 @@ An example
     </session-factory>
 </hibernate-configuration>
 ```
-
+- In hibernate.properties file change "hibernate.hbm2ddl.auto=none" 
+ to "hibernate.hbm2ddl.auto=create" for the first run and change back to none after first run. 
 - Add Apache Tomcat Server and configure with project artifacts.
 - Run Tomcat server
 

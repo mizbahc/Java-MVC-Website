@@ -31,14 +31,11 @@ public class HandleTaskServlet  extends HttpServlet {
 		try {
 			if (taskBody.length() > 0){
 				boolean success = ServiceContext.getTaskService().saveTask(task);
-
 				resp.sendRedirect("toDoPage.jsp");
 			}
 			else{
 				resp.sendRedirect("toDoPage.jsp");
 			}
-
-
 
 		}catch (Exception e){
 			resp.sendRedirect("toDoPage.jsp");

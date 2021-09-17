@@ -1,6 +1,7 @@
 package com.clk.dao;
 
 import com.clk.config.HibernateUtil;
+import com.clk.model.Task;
 import com.clk.model.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -59,6 +60,19 @@ public class UserDao {
 
 	}
 
+	public List<Task> getTasksOfUser(User user){
+		session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = session.beginTransaction();
+
+
+		user = getSingleUser(user.getUserName());
+
+		List list = user.getTasks();
+		transaction.commit();
+		session.close();
+		return  list;
+	}
+
 	private static User getSingleUser(String username){
 
 		String getIdSQL = "select id from t_user where username=?";
@@ -73,5 +87,7 @@ public class UserDao {
 		return user;
 
 	}
+
+
 
 }

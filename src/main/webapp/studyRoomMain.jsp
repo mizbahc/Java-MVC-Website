@@ -45,7 +45,7 @@
                     <a class="nav-link" href="#">Homeworks</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">ToDo</a>
+                    <a class="nav-link" href="toDoPage.jsp">ToDo</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>

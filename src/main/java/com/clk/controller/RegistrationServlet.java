@@ -31,23 +31,22 @@ public class RegistrationServlet extends HttpServlet {
 		String password = req.getParameter("password");
 		String passwordConfirm = req.getParameter("passwordConfirm");
 
-		if(!(password.equals(passwordConfirm))){
-			session.setAttribute("wrongInputInRegistration", true);
-
+		try {
+			if(!(password.equals(passwordConfirm))){
+				session.setAttribute("wrongInputInRegistration", true);
+				resp.sendRedirect("register.jsp");
+			}else{
+				User user = new User(firstName,lastName,username,password);
+				if(	ServiceContext.getUserService().saveUser(user)){
+					session.setAttribute("successfulRegistration", true);
+					resp.sendRedirect("../index.jsp");
+				}
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+			System.out.println("exception in register");
 			resp.sendRedirect("register.jsp");
 
-		}else{
-
-			User user = new User(firstName,lastName,username,password);
-			if(	ServiceContext.getUserService().saveUser(user)){
-
-				session.setAttribute("successfulRegistration", true);
-				resp.sendRedirect("../index.jsp");
-			}
 		}
-
-
-
-
 	}
 }

@@ -39,8 +39,5 @@ public class LoginServlet extends HttpServlet {
 			System.out.println("exception in login");
 			resp.sendRedirect("login.jsp");
 		}
-
-
-
 	}
 }

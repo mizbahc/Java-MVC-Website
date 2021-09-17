@@ -1,6 +1,7 @@
 package com.clk.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "t_user")
@@ -18,6 +19,8 @@ public class User {
 	@Column
 	private String password;
 
+	@OneToMany(mappedBy = "taskOwner", fetch = FetchType.EAGER)
+	private List<Task> tasks;
 
 	public User() {
 	}
@@ -67,5 +70,13 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
 	}
 }

@@ -1,6 +1,7 @@
 package com.clk.service;
 
 import com.clk.dao.UserDao;
+import com.clk.model.Task;
 import com.clk.model.User;
 
 import java.util.List;
@@ -18,6 +19,10 @@ public class UserService {
 
 	public User checkLogin(String username, String password){
 		return userDao.checkLogin(username,password);
+	}
+
+	public  List<Task> getTasksOfUser(User user){
+		return userDao.getTasksOfUser(user);
 	}
 
 }

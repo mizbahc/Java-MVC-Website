@@ -7,11 +7,15 @@ public class HibernateUtil {
 
 	private static SessionFactory sessionFactory = null;
 
-	public static SessionFactory getSessionFactory(){
+	static{
 		if(sessionFactory == null){
 			Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
 			sessionFactory = configuration.buildSessionFactory();
 		}
+
+	}
+
+	public static SessionFactory getSessionFactory(){
 		return sessionFactory;
 	}
 

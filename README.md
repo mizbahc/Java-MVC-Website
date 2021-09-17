@@ -1,9 +1,10 @@
 # Java-MVC-Website
 ## About
 - A website example using Maven web with Model View Controller structure. 
+- Backend with PostgreSQL
 - Login and register functionality with CRUD operations on users.
 - ToDo task with CRUD operations on ToDo page.
-- JSP pages
+- JSP pages with bootstrap.
 - Hibernate and entity classes.
 
 ## Installation

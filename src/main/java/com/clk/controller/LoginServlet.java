@@ -31,7 +31,6 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("wrongLogin", true);
 				resp.sendRedirect("login.jsp");
 			}else {
-
 				session.setAttribute("user",user);
 				resp.sendRedirect("../studyRoomMain.jsp");
 			}

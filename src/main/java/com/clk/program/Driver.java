@@ -1,7 +1,9 @@
 package com.clk.program;
 
 import com.clk.config.HibernateUtil;
+import com.clk.dao.TaskDao;
 import com.clk.dao.UserDao;
+import com.clk.model.Task;
 import com.clk.model.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -13,7 +15,8 @@ import java.util.List;
 public class Driver {
 	//User user2 = new User("john", "doe", "john", "1234");
 	public static void main(String[] args) {
-		/*User user = new User("john", "doe", "john","1234");
+		/*
+		User user = new User("john", "doe", "john","1234");
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = session.beginTransaction();
@@ -44,15 +47,34 @@ public class Driver {
 		System.out.println(users[0].toString());
 
 		session.close();
-		HibernateUtil.getSessionFactory().close();*/
+		HibernateUtil.getSessionFactory().close();
+
+*/
 
 
 	}
 
-	/*@Test
-	public void test(){
+	@Test
+	public void testSaveUser(){
 		UserDao dao = new UserDao();
-		User user3 = new User("user4","user4","user4","1234");
+		User user3 = new User("user3","user3","user3","user3");
 		dao.saveUser(user3);
-	}*/
+	}
+
+	@Test
+	public void testCheckLogin(){
+		UserDao dao = new UserDao();
+		User user = dao.checkLogin("john", "1234");
+		System.out.println(user);
+	}
+
+	@Test
+	public void testSaveTask(){
+		UserDao userDao = new UserDao();
+		User user = userDao.checkLogin("john", "1234");
+		TaskDao taskDao = new TaskDao();
+		Task task = new Task(user, "task4");
+		taskDao.saveTask(task);
+	}
+
 }

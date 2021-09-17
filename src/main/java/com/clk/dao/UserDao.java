@@ -17,6 +17,7 @@ public class UserDao {
 		Transaction transaction = session.beginTransaction();
 
 		try {
+			System.out.println("Saving new user");
 			session.persist(user);
 			session.flush();
 
@@ -38,13 +39,17 @@ public class UserDao {
 		User user = getSingleUser(username);
 
 		if(user == null){
+			System.out.println("No user found");
 			return null;
 		}else {
+			System.out.println("User found:" + user);
 			String checkPasswordSql = "select password from t_user where username=?";
 			Query query = session.createNativeQuery(checkPasswordSql);
 			query.setParameter(1,username);
 			Object passwordInDb = query.getSingleResult();
-			if (password.equals(passwordInDb)){
+			System.out.println(passwordInDb);
+			if (password.equals(passwordInDb.toString())){
+				System.out.println("Correct password");
 				return user;
 			}else {
 				return null;
@@ -68,12 +73,5 @@ public class UserDao {
 		return user;
 
 	}
-
-	/*@Test
-	public void test2(){
-		User user = checkLogin("user3","user3");
-		System.out.println(user.getId());
-	}*/
-
 
 }
